@@ -74,31 +74,43 @@ public class Main {
         cube.set(inputElement);
         System.out.println(cube.isSolved(cube) + " ");
         System.out.println(solver.whiteCrossIsReady(cube) + " cross");
+        System.out.println(solver.whiteCornersAreReady(cube) + " white Corners");
         cube.print();
-        new Scramble(20, cube);
+        //new Scramble(20, cube);
         
-        /*rotations.R(cube);
-        rotations.D(cube);
-        rotations.U(cube);
+        rotations.Rreverse(cube);
+        rotations.Dreverse(cube);
         rotations.R(cube);
         rotations.D(cube);
-        rotations.U(cube);
-        rotations.Freverse(cube);
         rotations.Breverse(cube);
-        rotations.Dreverse(cube);
         rotations.D(cube);
-        rotations.U(cube);
-        rotations.Freverse(cube);*/
+        rotations.B(cube);
+        rotations.F(cube);
+        rotations.Dreverse(cube);
+        rotations.Freverse(cube);
+       /* rotations.B(cube);
+        rotations.L(cube);
+        rotations.F(cube);
+        rotations.B(cube)*/;
 
 
         System.out.println(cube.isSolved(cube) + " ");
         System.out.println(solver.whiteCrossIsReady(cube) + " cross");
+        System.out.println(solver.whiteCornersAreReady(cube) + " white Corners");
         cube.print();
 
         solver.whiteCross(cube);
 
         System.out.println(cube.isSolved(cube) + " ");
         System.out.println(solver.whiteCrossIsReady(cube) + " cross");
+        System.out.println(solver.whiteCornersAreReady(cube) + " white Corners");
+        cube.print();
+
+        solver.whiteCorners(cube);
+
+        System.out.println(cube.isSolved(cube) + " ");
+        System.out.println(solver.whiteCrossIsReady(cube) + " cross");
+        System.out.println(solver.whiteCornersAreReady(cube) + " white Corners");
         cube.print();
 
 
