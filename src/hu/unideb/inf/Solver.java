@@ -82,6 +82,7 @@ public class Solver {
                 rotation.B(cube);
             }
             count++;
+            cube.print();
         }
 
         while(!(cube.getElement(1)=='b' && cube.getElement(10)=='o' && cube.getElement(19)=='g' && cube.getElement(28)=='r')){
@@ -102,7 +103,8 @@ public class Solver {
                 rotation.D(cube);
                 rotation.R(cube);
                 rotation.R(cube);
-                rotation.Dreverse(cube);
+                rotation.D(cube);
+                rotation.D(cube);
                 rotation.L(cube);
                 rotation.L(cube);
             }else if (cube.getElement(1)=='r'){
@@ -115,7 +117,7 @@ public class Solver {
                 rotation.L(cube);
                 rotation.L(cube);
             }//narancs-feher
-            if (cube.getElement(10)=='r'){
+            if (cube.getElement(10)=='b'){
                 rotation.F(cube);
                 rotation.F(cube);
                 rotation.Dreverse(cube);
@@ -140,7 +142,8 @@ public class Solver {
                 rotation.D(cube);
                 rotation.B(cube);
                 rotation.B(cube);
-                rotation.Dreverse(cube);
+                rotation.D(cube);
+                rotation.D(cube);
                 rotation.F(cube);
                 rotation.F(cube);
             }//zold-feher
@@ -151,7 +154,8 @@ public class Solver {
                 rotation.D(cube);
                 rotation.L(cube);
                 rotation.L(cube);
-                rotation.Dreverse(cube);
+                rotation.D(cube);
+                rotation.D(cube);
                 rotation.R(cube);
                 rotation.R(cube);
             } else if (cube.getElement(19)=='o'){
@@ -189,7 +193,8 @@ public class Solver {
                 rotation.D(cube);
                 rotation.F(cube);
                 rotation.F(cube);
-                rotation.Dreverse(cube);
+                rotation.D(cube);
+                rotation.D(cube);
                 rotation.B(cube);
                 rotation.B(cube);
             }else if (cube.getElement(28)=='g'){
@@ -203,6 +208,7 @@ public class Solver {
                 rotation.B(cube);
             }
         }
+        cube.print();
 
     }
 }

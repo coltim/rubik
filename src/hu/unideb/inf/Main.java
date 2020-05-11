@@ -7,11 +7,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-    	
-    	
-    	for(int i = 0; i<100; i++) {
-    		System.out.print((int)(Math.random() * (12 - 1 + 1) + 1) + " ");
-    	}
+
 
         Cube cube = new Cube();
         Rotations rotations = new Rotations();
