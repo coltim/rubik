@@ -316,12 +316,12 @@ public class Solver {
                 cube.print();
             } else {
                 System.out.println("mashol van a feher, alul?, vagy kesz a sor");
-                if (whiteCornersAreReady(cube)) {
+                /*if (whiteCornersAreReady(cube)) {
                     System.out.println("kesz az elso sor");
                     break;
-                }
-                //az aljan a lyukba helyezem a feheret
+                }*/
 
+                //az aljan a lyukba helyezem a feheret
                 //a sarga oldalon van a feher
                 if (cube.getElement(45) == 'w' ||
                         cube.getElement(47) == 'w' ||
@@ -353,9 +353,9 @@ public class Solver {
                     }
                     upCounter = 0;
                 }
-
                 //elso sorban van a feher
-                if (cube.getElement(0) == whiteEdge ||
+                //TODO:ne vegye eszre hamarabb hogy a felso sorba van feher, ha az also sorban is van
+                else if (cube.getElement(0) == whiteEdge ||
                         cube.getElement(2) == whiteEdge ||
                         cube.getElement(9) == whiteEdge ||
                         cube.getElement(11) == whiteEdge ||
@@ -364,7 +364,27 @@ public class Solver {
                         cube.getElement(27) == whiteEdge ||
                         cube.getElement(29) == whiteEdge) {
                     System.out.println("elso sorban van a feher");
-                    break;
+                    if(cube.getElement(0) == 'w' || cube.getElement(29) == 'w'){
+                        rotation.Lreverse(cube);
+                        rotation.Dreverse(cube);
+                        rotation.L(cube);
+                    }else if (cube.getElement(9) == 'w' || cube.getElement(2) == 'w'){
+                        rotation.Freverse(cube);
+                        rotation.Dreverse(cube);
+                        rotation.F(cube);
+                    }
+                    else if (cube.getElement(18) == 'w' || cube.getElement(11) == 'w'){
+                        rotation.Rreverse(cube);
+                        rotation.Dreverse(cube);
+                        rotation.R(cube);
+                    }
+                    else if (cube.getElement(27) == 'w' || cube.getElement(20) == 'w'){
+                        rotation.Breverse(cube);
+                        rotation.Dreverse(cube);
+                        rotation.B(cube);
+                    }
+                    cube.print();
+                    //break;
                 }
                 //rossz helyen van egy feher sarok
                 if ((cube.getElement(36) == whiteEdge &&
