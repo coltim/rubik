@@ -6,6 +6,25 @@ public class Cube {
 
 
     public Cube(){
+
+        for (int i = 0; i <= 8; i++) {
+            this.element[i] = 'b';
+        }
+        for (int i = 9; i <= 17; i++) {
+            this.element[i] = 'o';
+        }
+        for (int i = 18; i <= 26; i++) {
+            this.element[i] = 'g';
+        }
+        for (int i = 27; i <= 35; i++) {
+            this.element[i] = 'r';
+        }
+        for (int i = 36; i <= 44; i++) {
+            this.element[i] = 'w';
+        }
+        for (int i = 45; i <= 53; i++) {
+            this.element[i] = 'y';
+        }
     }
 
     public char getElement(int index) {

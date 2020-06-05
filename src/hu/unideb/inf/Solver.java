@@ -42,6 +42,21 @@ public class Solver {
 
     }
 
+    boolean secondLayerIsReady(Cube cube) {
+        boolean solved = true;
+        if (cube.getElement(3) != 'b' ||
+                cube.getElement(5) != 'b' ||
+                cube.getElement(12) != 'o' ||
+                cube.getElement(14) != 'o' ||
+                cube.getElement(21) != 'g' ||
+                cube.getElement(23) != 'g' ||
+                cube.getElement(30) != 'r' ||
+                cube.getElement(32) != 'r') {
+            solved = false;
+        }
+        return solved;
+    }
+
     void whiteCross(Cube cube) {
         char whiteEdge = 'w';
         int count = 0;
@@ -364,21 +379,19 @@ public class Solver {
                         cube.getElement(27) == whiteEdge ||
                         cube.getElement(29) == whiteEdge) {
                     System.out.println("elso sorban van a feher");
-                    if(cube.getElement(0) == 'w' || cube.getElement(29) == 'w'){
+                    if (cube.getElement(0) == 'w' || cube.getElement(29) == 'w') {
                         rotation.Lreverse(cube);
                         rotation.Dreverse(cube);
                         rotation.L(cube);
-                    }else if (cube.getElement(9) == 'w' || cube.getElement(2) == 'w'){
+                    } else if (cube.getElement(9) == 'w' || cube.getElement(2) == 'w') {
                         rotation.Freverse(cube);
                         rotation.Dreverse(cube);
                         rotation.F(cube);
-                    }
-                    else if (cube.getElement(18) == 'w' || cube.getElement(11) == 'w'){
+                    } else if (cube.getElement(18) == 'w' || cube.getElement(11) == 'w') {
                         rotation.Rreverse(cube);
                         rotation.Dreverse(cube);
                         rotation.R(cube);
-                    }
-                    else if (cube.getElement(27) == 'w' || cube.getElement(20) == 'w'){
+                    } else if (cube.getElement(27) == 'w' || cube.getElement(20) == 'w') {
                         rotation.Breverse(cube);
                         rotation.Dreverse(cube);
                         rotation.B(cube);
@@ -392,36 +405,133 @@ public class Solver {
                         cube.getElement(42) == whiteEdge &&
                         cube.getElement(44) == whiteEdge) && whiteCornersAreReady(cube) == false) {
                     System.out.println("rossz helyen van egy feher sarok");
-                    if(cube.getElement(0) != 'b'){
+                    if (cube.getElement(0) != 'b') {
                         rotation.Lreverse(cube);
                         rotation.Dreverse(cube);
                         rotation.L(cube);
-                    }else if (cube.getElement(9) != 'o'){
+                    } else if (cube.getElement(9) != 'o') {
                         rotation.Freverse(cube);
                         rotation.Dreverse(cube);
                         rotation.F(cube);
-                    }
-                    else if (cube.getElement(18) != 'g'){
+                    } else if (cube.getElement(18) != 'g') {
                         rotation.Rreverse(cube);
                         rotation.Dreverse(cube);
                         rotation.R(cube);
-                    }
-                    else if (cube.getElement(27) != 'r'){
+                    } else if (cube.getElement(27) != 'r') {
                         rotation.Breverse(cube);
                         rotation.Dreverse(cube);
                         rotation.B(cube);
                     }
                     cube.print();
-
                 }
-
             }
-
-            //count++;
-
         }
-
-
     }
 
+    void secondLayer(Cube cube) {
+        char yellow = 'y';
+
+        while (!secondLayerIsReady(cube)) {
+            System.out.println("nincs kesz");
+            cube.print();
+            //break;
+            //megnezi hogy van e az also sorban olyan el, amiben nincs sarga
+            while (!(cube.getElement(7) == yellow || cube.getElement(48) == yellow) ||
+                    !(cube.getElement(34) == yellow || cube.getElement(52) == yellow) ||
+                    !(cube.getElement(25) == yellow || cube.getElement(50) == yellow) ||
+                    !(cube.getElement(16) == yellow || cube.getElement(46) == yellow)) {
+
+                System.out.println("van jo el az also sorban");
+                //System.out.println((cube.getElement(7) == yellow || cube.getElement(48) == yellow));
+                //System.out.println((cube.getElement(34) == yellow || cube.getElement(52) == yellow));
+               // System.out.println((cube.getElement(25) == yellow || cube.getElement(50) == yellow));
+                //System.out.println((cube.getElement(16) == yellow || cube.getElement(46) == yellow));
+                cube.print();
+
+                if (cube.getElement(7) == 'b' && cube.getElement(48) == 'o') {
+                    rotation.Dreverse(cube);
+                    rotation.Freverse(cube);
+                    rotation.D(cube);
+                    rotation.F(cube);
+                    rotation.D(cube);
+                    rotation.L(cube);
+                    rotation.Dreverse(cube);
+                    rotation.Lreverse(cube);
+                } else if (cube.getElement(7) == 'o' && cube.getElement(48) == 'b') {
+                    rotation.D(cube);
+                    rotation.D(cube);
+                    rotation.L(cube);
+                    rotation.Dreverse(cube);
+                    rotation.Lreverse(cube);
+                    rotation.Dreverse(cube);
+                    rotation.Freverse(cube);
+                    rotation.D(cube);
+                    rotation.F(cube);
+                } else if (cube.getElement(7) == 'o' && cube.getElement(48) == 'g') {
+                    rotation.Rreverse(cube);
+                    rotation.D(cube);
+                    rotation.R(cube);
+                    rotation.D(cube);
+                    rotation.F(cube);
+                    rotation.Dreverse(cube);
+                    rotation.Freverse(cube);
+                } else if (cube.getElement(7) == 'g' && cube.getElement(48) == 'o') {
+                    rotation.Dreverse(cube);
+                    rotation.F(cube);
+                    rotation.Dreverse(cube);
+                    rotation.Freverse(cube);
+                    rotation.Dreverse(cube);
+                    rotation.Rreverse(cube);
+                    rotation.D(cube);
+                    rotation.R(cube);
+                } else if (cube.getElement(7) == 'r' && cube.getElement(48) == 'b') {
+                    rotation.D(cube);
+                    rotation.D(cube);
+                    rotation.Lreverse(cube);
+                    rotation.D(cube);
+                    rotation.L(cube);
+                    rotation.D(cube);
+                    rotation.B(cube);
+                    rotation.Dreverse(cube);
+                    rotation.Breverse(cube);
+                } else if (cube.getElement(7) == 'b' && cube.getElement(48) == 'r') {
+                    rotation.D(cube);
+                    rotation.B(cube);
+                    rotation.Dreverse(cube);
+                    rotation.Breverse(cube);
+                    rotation.Dreverse(cube);
+                    rotation.Lreverse(cube);
+                    rotation.D(cube);
+                    rotation.L(cube);
+                } else if (cube.getElement(7) == 'g' && cube.getElement(48) == 'r') {
+                    rotation.D(cube);
+                    rotation.Breverse(cube);
+                    rotation.D(cube);
+                    rotation.B(cube);
+                    rotation.D(cube);
+                    rotation.R(cube);
+                    rotation.Dreverse(cube);
+                    rotation.Rreverse(cube);
+                } else if (cube.getElement(7) == 'r' && cube.getElement(48) == 'g') {
+                    rotation.R(cube);
+                    rotation.Dreverse(cube);
+                    rotation.Rreverse(cube);
+                    rotation.Dreverse(cube);
+                    rotation.Breverse(cube);
+                    rotation.D(cube);
+                    rotation.B(cube);
+                }else{
+                    rotation.D(cube);
+                    System.out.println("van jo el az also sorban de rossz helyen");
+                    cube.print();
+                }
+            }
+
+            if(!secondLayerIsReady(cube)){
+            System.out.println("masodik sorban rosszul van egy el");
+            break;
+            }
+        }
+
+    }
 }

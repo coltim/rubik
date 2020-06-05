@@ -3,7 +3,63 @@ package hu.unideb.inf;
 public class Rotations {
 
     //Cube cube = new Cube();
+    //Rotations rotation = new Rotations();
     char temp;
+
+
+    public void movesTranslate(String moves, Cube cube){
+        char movesArray[] = moves.toCharArray();
+        for (char move : movesArray) {
+            if (move == 'L') {
+                this.L(cube);
+                continue;
+            }
+            if (move == 'l') {
+                this.Lreverse(cube);
+                continue;
+            }
+            if (move == 'R') {
+                this.R(cube);
+                continue;
+            }
+            if (move == 'r') {
+                this.Rreverse(cube);
+                continue;
+            }
+            if (move == 'U') {
+                this.U(cube);
+                continue;
+            }
+            if (move == 'u') {
+                this.Ureverse(cube);
+                continue;
+            }
+            if (move == 'D') {
+                this.D(cube);
+                continue;
+            }
+            if (move == 'd') {
+                this.Dreverse(cube);
+                continue;
+            }
+            if (move == 'F') {
+                this.F(cube);
+                continue;
+            }
+            if (move == 'f') {
+                this.Freverse(cube);
+                continue;
+            }
+            if (move == 'B') {
+                this.B(cube);
+                continue;
+            }
+            if (move == 'b') {
+                this.Breverse(cube);
+                continue;
+            }
+        }
+    }
 
     public void R(Cube cube){
         temp = cube.getElement(38);

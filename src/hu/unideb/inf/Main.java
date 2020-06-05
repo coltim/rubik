@@ -12,28 +12,13 @@ public class Main {
         Cube cube = new Cube();
         Rotations rotations = new Rotations();
         Solver solver = new Solver();
+        DepthFirstSearch dfs;
         Scramble scramble;
         char inputElement[] = new char[54];
+        int scramblesNumber = 8;
 
 
-        for (int i = 0; i <= 8; i++){
-            inputElement[i] = 'b';
-        }
-        for (int i = 9; i <= 17; i++){
-            inputElement[i] = 'o';
-        }
-        for (int i = 18; i <= 26; i++){
-            inputElement[i] = 'g';
-        }
-        for (int i = 27; i <=35; i++){
-            inputElement[i] = 'r';
-        }
-        for (int i = 36; i <= 44; i++){
-            inputElement[i] = 'w';
-        }
-        for (int i = 45; i <= 53; i++){
-            inputElement[i] = 'y';
-        }
+
 
 
 
@@ -71,14 +56,15 @@ public class Main {
         }*/
 
 
-        cube.set(inputElement);
-        System.out.println(cube.isSolved(cube) + " ");
+        //cube.set(inputElement);
+        /*System.out.println(cube.isSolved(cube) + " ");
         System.out.println(solver.whiteCrossIsReady(cube) + " cross");
         System.out.println(solver.whiteCornersAreReady(cube) + " white Corners");
+        System.out.println(solver.secondLayerIsReady(cube) + " secondLayer");
         cube.print();
-        //new Scramble(20, cube);
-        
-        rotations.Rreverse(cube);
+        new Scramble(scramblesNumber, cube);*/
+
+        /*rotations.Rreverse(cube);
         rotations.Dreverse(cube);
         rotations.R(cube);
         rotations.D(cube);
@@ -87,16 +73,18 @@ public class Main {
         rotations.B(cube);
         rotations.F(cube);
         rotations.Dreverse(cube);
-        rotations.Freverse(cube);
+        rotations.Freverse(cube);*/
        /* rotations.B(cube);
         rotations.L(cube);
         rotations.F(cube);
-        rotations.B(cube)*/;
+        rotations.B(cube)*/
+        ;
 
 
-        System.out.println(cube.isSolved(cube) + " ");
+       /*System.out.println(cube.isSolved(cube) + " ");
         System.out.println(solver.whiteCrossIsReady(cube) + " cross");
         System.out.println(solver.whiteCornersAreReady(cube) + " white Corners");
+        System.out.println(solver.secondLayerIsReady(cube) + " secondLayer");
         cube.print();
 
         solver.whiteCross(cube);
@@ -104,6 +92,8 @@ public class Main {
         System.out.println(cube.isSolved(cube) + " ");
         System.out.println(solver.whiteCrossIsReady(cube) + " cross");
         System.out.println(solver.whiteCornersAreReady(cube) + " white Corners");
+        System.out.println(solver.secondLayerIsReady(cube) + " secondLayer");
+
         cube.print();
 
         solver.whiteCorners(cube);
@@ -111,8 +101,29 @@ public class Main {
         System.out.println(cube.isSolved(cube) + " ");
         System.out.println(solver.whiteCrossIsReady(cube) + " cross");
         System.out.println(solver.whiteCornersAreReady(cube) + " white Corners");
+        System.out.println(solver.secondLayerIsReady(cube) + " secondLayer");
+
         cube.print();
 
+        solver.secondLayer(cube);
+
+        System.out.println(cube.isSolved(cube) + " ");
+        System.out.println(solver.whiteCrossIsReady(cube) + " cross");
+        System.out.println(solver.whiteCornersAreReady(cube) + " white Corners");
+        System.out.println(solver.secondLayerIsReady(cube) + " secondLayer");*/
+
+       // cube.print();
+       scramble = new Scramble(scramblesNumber, cube);
+
+       // System.out.println("mainben a getrandomscramble: " + scramble.getRandomMoves());
+
+        cube.print();
+
+        String randomSrambleMoves = scramble.getRandomMoves();
+        dfs = new DepthFirstSearch(randomSrambleMoves, cube);
+        dfs.search();
+
+        System.out.println("Legrovidebb megoldasok: " + dfs.shortestSolutions());
 
     }
 }
