@@ -12,11 +12,8 @@ public class Solver {
                 cube.getElement(41) != center ||
                 cube.getElement(43) != center) {
             solved = false;
-
         }
-
         return solved;
-
     }
 
     boolean whiteCornersAreReady(Cube cube) {

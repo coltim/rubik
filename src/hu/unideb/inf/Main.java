@@ -15,7 +15,7 @@ public class Main {
         DepthFirstSearch dfs;
         Scramble scramble;
         char inputElement[] = new char[54];
-        int scramblesNumber = 8;
+        int scramblesNumber = 20;
 
 
 

@@ -51,7 +51,7 @@ public class DepthFirstSearch {
 
         //System.out.println("proba - " + moves);
         //tempCube.print();
-        if (tempCube.isSolved(tempCube)) {
+        if (tempCube.whiteCrossIsSolved(tempCube)) {
             solution = moves;
             solutionsList.add(solution);
             System.out.println("megoldas: " + solution);
