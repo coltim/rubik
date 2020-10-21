@@ -13,13 +13,11 @@ public class Main {
         Rotations rotations = new Rotations();
         Solver solver = new Solver();
         DepthFirstSearch dfs;
+        BreadthFirstSearch bfs;
+        IterativDeepingSearch ids;
         Scramble scramble;
         char inputElement[] = new char[54];
-        int scramblesNumber = 20;
-
-
-
-
+        int scramblesNumber = 6;
 
 
       /*  Scanner in = new Scanner(System.in);
@@ -113,17 +111,33 @@ public class Main {
         System.out.println(solver.secondLayerIsReady(cube) + " secondLayer");*/
 
        // cube.print();
-       scramble = new Scramble(scramblesNumber, cube);
+       for (int i = 0; i < 5; i++) {
+           scramble = new Scramble(scramblesNumber, cube);
 
-       // System.out.println("mainben a getrandomscramble: " + scramble.getRandomMoves());
+           // System.out.println("mainben a getrandomscramble: " + scramble.getRandomMoves());
 
-        cube.print();
+           //cube.print();
 
-        String randomSrambleMoves = scramble.getRandomMoves();
-        dfs = new DepthFirstSearch(randomSrambleMoves, cube);
-        dfs.search();
+           String randomSrambleMoves = scramble.getRandomMoves();
+           boolean goal = cube.isSolved(cube);
+           dfs = new DepthFirstSearch(randomSrambleMoves, cube);
+           dfs.search();
 
-        System.out.println("Legrovidebb megoldasok: " + dfs.shortestSolutions());
+           System.out.println("Legrovidebb megoldasok: " + dfs.shortestSolutions());
+           System.out.println("-------");
+
+          /* bfs = new BreadthFirstSearch(randomSrambleMoves, cube);
+           bfs.search();
+
+           System.out.println("Legrovidebb megoldasok: " + bfs.shortestSolutions());
+           System.out.println("------------------------------------");*/
+           System.out.println("************************************");
+
+           /*ids = new IterativDeepingSearch(randomSrambleMoves, cube);
+           ids.search();
+
+           System.out.println("Legrovidebb megoldasok: " + ids.shortestSolutions());*/
+       }
 
     }
 }

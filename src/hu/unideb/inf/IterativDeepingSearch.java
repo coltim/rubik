@@ -1,65 +1,70 @@
 package hu.unideb.inf;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
 
-public class DepthFirstSearch {
+public class IterativDeepingSearch {
 
     Rotations rotation = new Rotations();
     Cube cube = new Cube();
     Scramble scramble;
     Cube tempCube = new Cube();
-    private int maxDepth = 6;
+    private int maxDepth = 3;
     private String solution;
     String randomScrambleMoves;
     /*List<String> solutionsList = new ArrayList<>();
     List<String> shortestSolutionsList = new ArrayList<>();*/
     HashSet<String> solutionsSet = new HashSet<>();
     List<String> shortestSolutionsList = new ArrayList<>();
+    ArrayList<String> list = new ArrayList<>();
 
 
-
-    public DepthFirstSearch(String randomScrambleMoves, Cube cube) {
+    public IterativDeepingSearch(String randomScrambleMoves, Cube cube) {
         this.randomScrambleMoves = randomScrambleMoves;
         this.solution = "None";
         this.cube = cube;
     }
 
-
     public void search() {
         search(0, "");
     }
 
-    private void search(int currentDepth, String moves) {
+    public void search(int currentDepth, String moves) {
 
 
         //tempCube = cube;
         //cube.print();
         //tempCube.print();
         char possibleMoves[] = {'L', 'l', 'R', 'r', 'U', 'u', 'D', 'd', 'F', 'f', 'B', 'b'};
-        for (char c : possibleMoves) {
-            if (currentDepth < maxDepth) {
-                search(currentDepth + 1, moves.concat(Character.toString(c)));
+
+        for (Character c : possibleMoves) {
+            list.add(c.toString());
+        }
+
+        System.out.println(list);
+        for (String str : list) {
+           // System.out.println(str);
+            tempCube = new Cube();
+            rotation.movesTranslate(randomScrambleMoves, tempCube);
+            rotation.movesTranslate(str, tempCube);
+            if (tempCube.isSolved(tempCube)) {
+                solution = str;
+                solutionsSet.add(solution);
+
             }
         }
-
-
-        //new Scramble(1, tempCube);
-        //tempCube.print();
-        tempCube = new Cube();
-        rotation.movesTranslate(randomScrambleMoves, tempCube);
-        rotation.movesTranslate(moves, tempCube);
-        //System.out.println("ez a melysegiben van");
-
-        //System.out.println(moves);
-        //tempCube.print();
-        if (tempCube.isSolved(tempCube)) {
-            //tempCube.print();
-            solution = moves;
-            solutionsSet.add(solution);
-           // System.out.println("megoldas: " + solution);
-           // System.out.println(solutionsSet.size());
-
+        for (String str : list){
+            for(Character c : possibleMoves){
+                list.add(str.concat(c.toString()));
+            }
         }
+        System.out.println(list);
+
+
+
+
     }
 
     public List<String> shortestSolutions() {
@@ -74,8 +79,8 @@ public class DepthFirstSearch {
 
         //shortestSolutionsList.add(shortestSolution);
 
-        for(String str : solutionList) {
-            if(str.length() == shortestSolution.length()) {
+        for (String str : solutionList) {
+            if (str.length() == shortestSolution.length()) {
                 shortestSolutionsList.add(str);
             }
         }

@@ -4,7 +4,6 @@ package hu.unideb.inf;
 public class Cube {
     private char element[] = new char[54];
 
-
     public Cube() {
 
         for (int i = 0; i <= 8; i++) {
@@ -68,7 +67,27 @@ public class Cube {
                 cube.getElement(28) != 'r') {
             solved = false;
         }
+        return solved;
+    }
 
+    boolean firstLayerIsSolved(Cube cube) {
+        boolean solved = true;
+        char center = cube.getElement(40);
+        if (cube.getElement(36) != center ||
+                cube.getElement(38) != center ||
+                cube.getElement(42) != center ||
+                cube.getElement(44) != center) {
+            solved = false;
+        } else if (cube.getElement(0) != 'b' ||
+                cube.getElement(2) != 'b' ||
+                cube.getElement(9) != 'o' ||
+                cube.getElement(11) != 'o' ||
+                cube.getElement(18) != 'g' ||
+                cube.getElement(20) != 'g' ||
+                cube.getElement(27) != 'r' ||
+                cube.getElement(29) != 'r') {
+            solved = false;
+        }
         return solved;
     }
 
